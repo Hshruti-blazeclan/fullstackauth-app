@@ -33,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "helmet": "^3.16.0"
   }

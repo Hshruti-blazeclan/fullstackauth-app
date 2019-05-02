@@ -1,7 +1,10 @@
 var express = require("express");
 var helmet = require('helmet');
+var cors = require('cors');
+
 
 var app = express();
+app.use(cors())
 app.use(helmet());
 
 // Serve the static files from the build folder
