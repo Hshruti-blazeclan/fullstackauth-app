@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Banner1 from "../static/images/bg_1.jpg"
+import Banner2 from "../static/images/bg_2.jpg"
 import "../static/css/style.css"
 
 class Home extends Component {
@@ -45,7 +47,7 @@ class Home extends Component {
         </nav>
         {/* END nav */}
         <section className="home-slider owl-carousel">
-          <div className="slider-item" style={{ backgroundImage: 'url(../static/media/bg_1.97a35c31.jpg)' }}>
+          <div className="slider-item" style={{ backgroundImage: `url(${Banner1})` }}>
             <div className="overlay" />
             <div className="container">
               <div className="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -56,7 +58,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="slider-item" style={{ backgroundImage: 'url(../static/media/bg_2.18772550.jpg)' }}>
+          <div className="slider-item" style={{ backgroundImage: `url(${Banner2})` }}>
             <div className="overlay" />
             <div className="container">
               <div className="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
