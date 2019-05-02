@@ -25,7 +25,7 @@ class Login extends Component {
       headers: { 'Content-Type': 'application/json' }, 
       data: JSON.stringify(this.state) 
     }).then((response) => {
-      console.log(response.json())
+      // console.log(response.json())
       return response.json()
       // .then((json) => {
       //   if (response.ok) {
