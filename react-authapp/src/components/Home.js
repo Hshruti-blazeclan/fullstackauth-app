@@ -29,15 +29,15 @@ class Home extends Component {
         </div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
           <div className="container d-flex align-items-center">
-            <a className="navbar-brand" href="index.html">Welcome to Student Dashboard</a>
+            <a className="navbar-brand" href="index.html">Welcome to SchoolOne</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="oi oi-menu" /> Menu
             </button>
             <div className="collapse navbar-collapse" id="ftco-nav">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item active"><a href="/" className="nav-link pl-0">Home</a></li>
-                <li className="nav-item"><a href="/profile" className="nav-link">Profile</a></li>
-                <li className="nav-item"><a href="/teachers" className="nav-link">Teacher</a></li>
+                <li className="nav-item"><a href="/students" className="nav-link">Students</a></li>
+                <li className="nav-item"><a href="/teachers" className="nav-link">Teachers</a></li>
                 <li className="nav-item"><a href="/courses" className="nav-link">Courses</a></li>
               </ul>
             </div>
@@ -56,7 +56,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="slider-item" style={{ backgroundImage: 'url(/static/media/bg_2.18772550.jpg)' }}>
+          <div className="slider-item" style={{ backgroundImage: 'url(../static/media/bg_2.18772550.jpg)' }}>
             <div className="overlay" />
             <div className="container">
               <div className="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -167,7 +167,7 @@ class Home extends Component {
             <div className="row">
               <div className="col-md-9 text-col">
                 <h2 className="text-h2-color">Teaching Your Child Some Good Manners</h2>
-                <p className="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p className=" text-color mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
               </div>
             </div>
           </div>
