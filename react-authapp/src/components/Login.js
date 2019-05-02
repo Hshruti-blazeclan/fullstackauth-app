@@ -23,7 +23,7 @@ class Login extends Component {
     fetch('https://ayye5kp8pj.execute-api.us-east-1.amazonaws.com/staging/signinuser', { 
       method: 'POST', 
       headers: { 'Content-Type': 'application/json' }, 
-      data: JSON.stringify(this.state) 
+      body: JSON.stringify(this.state) 
     }).then((response) => {
       // console.log(response.json())
       return response.json()
