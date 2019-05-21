@@ -6,31 +6,30 @@ import CommonHeader from './CommonHeader.js';
 
 
 class School1Home extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             form: {
-                username: "",
+                userName: "",
                 password: "",
-                // url: "schooltwo"
+                hostName: this.props.urlParams ? this.props.urlParams : ""
             }
         }
     }
     render() {
-        console.log("-==================school2=+>>props", this.props)
-
         return (
             <div>
-               <CommonHeader
+                <CommonHeader
                     pathname={this.props.urlParams}
                 />
                 <section className="ftco-services ftco-no-pb">
                     <div className="container-wrap">
                         <Login form={this.state.form}
+                            pathname={this.props.urlParams}
                         />
                     </div>
                 </section>
-                <CommonFooter/>
+                <CommonFooter />
             </div>
         )
     }

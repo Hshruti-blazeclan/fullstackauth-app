@@ -8,9 +8,6 @@ import moodleIcon from '../../static/images/moodle_386x288.jpg'
 
 
 class StudentDashboard extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -30,31 +27,23 @@ class StudentDashboard extends Component {
           <div className="row">
             <div className="col-md-4 stud-sidebar">
               <div className="sidebar-nav-fixed affix">
-                <div className="well">
-                  <ul className="nav ">
-                    <li className="nav-header">Sidebar</li>
-                    <li className="active"><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
-                    </li>
-                    <li><a href="#">Link</a>
+                  <ul className="sidebar-nav-ul-fixed">
+                    <p>Sidebar</p><hr/>
+                    <li className="active"><a href="#">My Emails</a>
+                    </li><br/>
+                    <li><a href="#">Moodles</a>
+                    </li><br/>
+                    <li><a href="#">My Attendence</a>
+                    </li><br/>
+                    <li><a href="#">My Calender</a>
+                    </li><br/>
+                    <li><a href="#">My Courses</a>
+                    </li><br/>
+                    <li><a href="#">Communications</a>
+                    </li><br/>
+                    <li><a href="#">My Fundings</a>
                     </li>
                   </ul>
-                </div>
               </div>
             </div>
             <div className="col-sm-9 col-md-10 main">

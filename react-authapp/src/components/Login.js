@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom"
 import "../static/css/style.css"
-import DashboardMain from './Dashboard/DashboardMain';
 
 class Login extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class Login extends Component {
       toDashboard: false,
       errorMsg: "",
       isActive: true,
-      groupName: ""
+      groupName: sessionStorage.getItem('groupName') ? sessionStorage.getItem('groupName') : "",
     }
   }
 
@@ -22,6 +21,11 @@ class Login extends Component {
 
   inputChangeHandleHandler = (e) => {
     e.preventDefault();
+    if(this.state.errorMsg){
+      this.setState({
+        isActive: true,
+      });
+    }
     let store = this.props.form;
     store[e.target.name] = e.target.value;
     this.setState(store);
@@ -29,7 +33,6 @@ class Login extends Component {
 
 
   handleFormSubmit = (e) => {
-    console.log("data=>", JSON.stringify(this.props.form))
     e.preventDefault();
     if(!this.state.errorMsg){
       this.setState({
@@ -41,17 +44,17 @@ class Login extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.props.form)
     }).then(response => response.json())
-      .then((data) => {
+    .then((data) => {
         let dataObj = "";
-        if (data['errorMessage']) {
-          dataObj = data['errorMessage'];
-          console.log("=++++++++>in dataob ib if", dataObj)
-          this.setState({ errorMsg: dataObj.body.replace(/["']/g, "") })
+        console.log("=++++>>>>>>>>>>>>>>data", data)
+        if (data.success === "false") {
+          dataObj = "Invalid Username and Password..!!!";
+          this.setState({ errorMsg: dataObj })
         } else {
           dataObj = data;
-          // console.log("=+>>>>>>>>>>>>dataonj", dataObj)
           sessionStorage.setItem('token', dataObj.token)
           sessionStorage.setItem('groupName', dataObj.groupName)
+          sessionStorage.setItem('userName', this.props.form.userName)
           this.setState({ toDashboard: true, groupName: dataObj.groupName })
         }
         // window.open('/home', '_self');
@@ -61,7 +64,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log("=>>>>>>>>>>>>..state", this.state, this.props)
+    console.log("=>>>>>>>>>>>>..state", this.state)
     if (this.state.toDashboard === true) {
       return <Redirect to={{
         pathname: this.props.pathname === "schoolone" ? "/schoolone/dashboard" : "/schooltwo/dashboard",
@@ -72,7 +75,6 @@ class Login extends Component {
       }}
       />
     }
-    console.log("=>>>>>>>role", this.state.groupName)
     return (
       <div className="login-form">
         <form onSubmit={this.handleFormSubmit}>

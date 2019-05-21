@@ -11,39 +11,33 @@ import AdminDashboard from './AdminDashboard';
 class DashboardMain extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   groupName: this.props.location.state.groupName ? this.props.location.state.groupName : "",
-    //   routeName: this.props.location.state.routeName ? this.props.location.state.routeName : ""
-    // }
+    this.state = {
+      groupName: sessionStorage.getItem('groupName'),
+      userName: sessionStorage.getItem('userName'),
+    }
   }
-  // onLogout = () => {
-  //   console.log("================this.props", this.props)
-  //   this.props.history.push('/school-one');
-  // }
-
-
-  componentWillUpdate(nextProps, nextState) {
-    console.log('Component will update!');
- }
 
   render() {
-    console.log("===>>..this.props", this.props)
+    const getGroupName = this.state.groupName ? this.state.groupName : this.props.location.state.groupName
     return (
       <div>
         <CommonHeader
           pathname={this.props.location.pathname}
+          groupName={getGroupName}
         />
-        {this.props.location.state.groupName == "student" ?
+        {getGroupName === "student" ?
           <StudentDashboard />
           :
-          this.props.location.state.groupName == "teacher" ?
+          getGroupName === "teacher" ?
             <TeacherDashboard />
             :
-            this.props.location.state.groupName == "parent" ?
+            getGroupName === "parent" ?
               <ParentDashboard />
               :
-              this.props.location.state.groupName == "admin" ?
-                <AdminDashboard />
+              getGroupName === "admin" ?
+                <AdminDashboard 
+                pathname={this.props.location.pathname}
+                groupName={getGroupName} />
                 :
                 null
         }

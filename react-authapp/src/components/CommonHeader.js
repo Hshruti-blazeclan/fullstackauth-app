@@ -1,60 +1,9 @@
 import React, { Component } from 'react'
 
 class CommonHeader extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        //console.log("-====================+>>props", this.props.pathname.includes("schoolone"))
-
         return (
             <div>
-
-                {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
-                    <div className="container d-flex align-items-center">
-                        {this.props.pathname == "/schoolone/about" || this.props.pathname == "/schooltwo/about" ?
-                            <a className="navbar-brand" href="/schoole-one/about">About Us<br></br>
-                                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                            </a> 
-                        :
-                        this.props.pathname == "/schoolone/courses" || this.props.pathname == "/schooltwo/courses" ?
-                            <a className="navbar-brand">Explore our Courses<br></br>
-                                <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                            </a>
-                        :
-                            <a className="navbar-brand">Welcome to {`${/[^/]*$/.exec(this.props.pathname)}`.toUpperCase()}
-                            </a>
-
-                        }
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="oi oi-menu" /> Menu
-                        </button>
-                        <div className="collapse navbar-collapse" id="ftco-nav">
-                            { this.props.pathname == "schoolone" ||  this.props.pathname == "schooltwo" ||
-                                this.props.pathname == "/schoolone/about" || this.props.pathname == "/schooltwo/about" || this.props.pathname == "/schoolone/courses" || this.props.pathname == "/schooltwo/courses" ?
-                                <ul className="navbar-nav ml-auto">
-                                    <li className={this.props.pathname == "schoolone" || this.props.pathname == "schooltwo" ? "nav-item active" : "nav-item" }><a href={this.props.pathname.includes("schoolone") ? "/schoolone" : "/schooltwo"} className="nav-link pl-0">Home</a></li>
-                                    
-                                    <li className={this.props.pathname == "/schoolone/about" || this.props.pathname == "/schooltwo/about" ? "nav-item active" : "nav-item" }><a href={this.props.pathname.includes("schoolone") || this.props.pathname == "/schoolone/about" ? "/schoolone/about" : "/schooltwo/about"}
-                                        className="nav-link">About</a></li>
-                                    
-                                    <li className={this.props.pathname == "/schoolone/courses" || this.props.pathname == "/schooltwo/courses" ? "nav-item active" : "nav-item" }><a href={this.props.pathname.includes("schoolone") || this.props.pathname == "/schoolone/courses" ? "/schoolone/courses" : "/schooltwo/courses"}
-                                        className="nav-link">Courses</a></li>
-                                </ul>
-                                :
-                                <ul className="navbar-nav ml-auto">
-                                    <li className={this.props.pathname == "/schoolone/dashboard" || this.props.pathname == "/schooltwo/dashboard" ? "nav-item active" : "nav-item" }><a href={this.props.pathname.includes("schoolone") || this.props.pathname == "/schoolone/dashboard" ? "/schoolone/dashboard" : "/schooltwo/dashboard"} className="nav-link">Dashboard</a></li>
-                                    
-                                    <li className={this.props.pathname == "/schoolone/profile" || this.props.pathname == "/schooltwo/profile" ? "nav-item active" : "nav-item"}><a href={this.props.pathname.includes("schoolone") || this.props.pathname == "/schoolone/profile" ? "/schoolone/profile" : "/schooltwo/profile"} className="nav-link">Profile</a></li>
-                                    
-                                    <li className="nav-item"><a href={this.props.pathname.includes("schoolone") ? "/schoolone" : "/schooltwo"}className="nav-link">Logout</a></li>
-                                </ul>
-                            }
-                        </div>
-                    </div>
-                </nav> */}
-                {/* END nav */}
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                     <div className="py-2 bg-primary">
                         <div className="container">
@@ -89,13 +38,8 @@ class CommonHeader extends Component {
                                 <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                             </a>
                             :
-                            this.props.pathname == "/schoolone/courses" || this.props.pathname == "/schooltwo/courses" ?
-                                <a className="navbar-brand">Explore our Courses<br></br>
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                                </a>
-                                :
-                                <a className="navbar-brand">Welcome to {`${/[^/]*$/.exec(this.props.pathname)}`.toUpperCase()}
-                                </a>
+                            <a className="navbar-brand">Welcome to {`${/[^/]*$/.exec(this.props.pathname)}`.toUpperCase()}
+                            </a>
 
                         }
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,9 +53,6 @@ class CommonHeader extends Component {
 
                                     <li className={this.props.pathname == "/schoolone/about" || this.props.pathname == "/schooltwo/about" ? "nav-item active" : "nav-item"}><a href={this.props.pathname.includes("schoolone") || this.props.pathname == "/schoolone/about" ? "/schoolone/about" : "/schooltwo/about"}
                                         className="nav-link">About</a></li>
-
-                                    <li className={this.props.pathname == "/schoolone/courses" || this.props.pathname == "/schooltwo/courses" ? "nav-item active" : "nav-item"}><a href={this.props.pathname.includes("schoolone") || this.props.pathname == "/schoolone/courses" ? "/schoolone/courses" : "/schooltwo/courses"}
-                                        className="nav-link">Courses</a></li>
                                 </ul>
                                 :
                                 <ul className="navbar-nav ml-auto">

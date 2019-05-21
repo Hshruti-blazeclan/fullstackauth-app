@@ -7,10 +7,45 @@ import CommonHeader from './CommonHeader';
 class Profile extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      groupName: sessionStorage.getItem('groupName'),
+      userName: sessionStorage.getItem('userName'),
+      token: sessionStorage.getItem('token'),
+      userId: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      errorMsg: "",
+    }
+  }
+
+  componentDidMount = () => {
+    fetch(`${'https://ayye5kp8pj.execute-api.us-east-1.amazonaws.com/staging/getuser/' + this.state.userName}`, {
+      method: 'GET',
+      headers: { "Authorization": this.state.token },
+    }).then(response => response.json())
+      .then((data) => {
+        if (data.status == 0) {
+          this.setState({ errorMsg: data.body })
+        }
+        else {
+          this.setState(Object.assign({}, this.state, {
+            userId: data.data.userId,
+            email: data.data.email,
+            firstName: data.data.firstName,
+            lastName: data.data.lastName,
+            phoneNumber: data.data.phoneNumber
+          }))
+        }
+      })
+      .catch((error) => {
+        console.log("Something went wrong", + error)
+      });
   }
 
   render() {
-    //console.log("===>>..this.props", this.props)
+
     return (
       <div>
         <CommonHeader
@@ -19,17 +54,17 @@ class Profile extends Component {
         <div className="container main-secction">
           <div className="row">
             <div className="col-md-12 col-sm-12 col-xs-12 image-section">
-              <img src={Banner1} />
+              <img alt="banner1" src={Banner1} />
             </div>
             <div className="row user-left-part">
               <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
                 <div className="row ">
                   <div className="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" className="rounded-circle" />
+                    <img alt="avtar" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" className="rounded-circle" />
                   </div>
                   <div className="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
-                    <button id="btn-contact" data-toggle="modal" data-target="#contact" className="btn btn-success btn-block follow">Contactarme</button> 
-                    <button className="btn btn-warning btn-block">Descargar Curriculum</button>                               
+                    <button id="btn-contact" data-toggle="modal" data-target="#contact" className="btn btn-success btn-block follow">Contact Me</button>
+                    <button className="btn btn-warning btn-block">{this.state.phoneNumber ? this.state.phoneNumber : null}</button>
                   </div>
                 </div>
               </div>
@@ -38,8 +73,12 @@ class Profile extends Component {
                   <div className="col-md-12 profile-header">
                     <div className="row">
                       <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                        <h1>Juan Perez</h1>
-                        <h5>Developer</h5>
+                        <h1>{this.state.firstName && this.state.lastName ?
+                          this.state.firstName + ' ' + this.state.lastName
+                          : null
+                        }
+                        </h1>
+                        <h5>{this.state.groupName ? this.state.groupName.toUpperCase() : null}</h5>
                       </div>
                     </div>
                   </div>
@@ -53,15 +92,18 @@ class Profile extends Component {
                                 <label>ID</label>
                               </div>
                               <div className="col-md-6">
-                                <p>509230671</p>
+                                <p>{this.state.userId ? this.state.userId : null}</p>
                               </div>
                             </div>
                             <div className="row">
                               <div className="col-md-2">
-                                <label>Nombre</label>
+                                <label>Name</label>
                               </div>
                               <div className="col-md-6">
-                                <p>Juan Perez</p>
+                                <p>{this.state.firstName && this.state.lastName ?
+                                  this.state.firstName + ' ' + this.state.lastName
+                                  : null
+                                }</p>
                               </div>
                             </div>
                             <div className="row">
@@ -69,72 +111,15 @@ class Profile extends Component {
                                 <label>Email</label>
                               </div>
                               <div className="col-md-6">
-                                <p>juanp@gmail.com</p>
+                                <p>{this.state.email ? this.state.email : null}</p>
                               </div>
                             </div>
                             <div className="row">
                               <div className="col-md-2">
-                                <label>Teléfono</label>
+                                <label>Role</label>
                               </div>
                               <div className="col-md-6">
-                                <p>12345678</p>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-2">
-                                <label>Profesion</label>
-                              </div>
-                              <div className="col-md-6">
-                                <p>Developer</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div role="tabpanel" className="tab-pane fade" id="buzz">
-                            <div className="row">
-                              <div className="col-md-6">
-                                <label>Experience</label>
-                              </div>
-                              <div className="col-md-6">
-                                <p>Expert</p>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-6">
-                                <label>Hourly Rate</label>
-                              </div>
-                              <div className="col-md-6">
-                                <p>10$/hr</p>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-6">
-                                <label>Total Projects</label>
-                              </div>
-                              <div className="col-md-6">
-                                <p>230</p>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-6">
-                                <label>English Level</label>
-                              </div>
-                              <div className="col-md-6">
-                                <p>Expert</p>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-6">
-                                <label>Availability</label>
-                              </div>
-                              <div className="col-md-6">
-                                <p>6 months</p>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-md-12">
-                                <label>Your Bio</label>
-                                <br />
-                                <p>Your detail description</p>
+                                <p>{this.state.groupName ? this.state.groupName : null}</p>
                               </div>
                             </div>
                           </div>
