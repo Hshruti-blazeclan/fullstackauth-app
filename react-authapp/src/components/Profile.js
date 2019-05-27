@@ -26,8 +26,8 @@ class Profile extends Component {
       headers: { "Authorization": this.state.token },
     }).then(response => response.json())
       .then((data) => {
-        if (data.status == 0) {
-          this.setState({ errorMsg: data.body })
+        if (data.status === 0) {
+          this.setState({ errorMsg: "No records found for given email id" })
         }
         else {
           this.setState(Object.assign({}, this.state, {
@@ -56,6 +56,11 @@ class Profile extends Component {
             <div className="col-md-12 col-sm-12 col-xs-12 image-section">
               <img alt="banner1" src={Banner1} />
             </div>
+            {this.state.errorMsg ? 
+              <div className="error-content">
+                <h3>{this.state.errorMsg}</h3>
+              </div>
+            :
             <div className="row user-left-part">
               <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
                 <div className="row ">
@@ -130,9 +135,10 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
+            }
           </div>
         </div>
-        <div className="modal fade" id="contact" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {/* <div className="modal fade" id="contact" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
@@ -164,7 +170,7 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <CommonFooter />
       </div>
     )

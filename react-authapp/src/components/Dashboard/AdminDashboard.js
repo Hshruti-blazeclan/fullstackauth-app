@@ -8,6 +8,7 @@ class AdminDashboard extends Component {
     this.state = {
       userList: [],
       token: sessionStorage.getItem('token'),
+      errorMsg: ""
     }
   }
 
@@ -21,7 +22,7 @@ class AdminDashboard extends Component {
     }).then(response => response.json())
       .then((data) => {
         if (data.status === 0) {
-          this.setState({ errorMsg: data.data.body })
+          this.setState({ errorMsg: data.data.message })
         }
         else {
           this.setState(Object.assign({}, this.state, {
@@ -37,7 +38,6 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div className="admin-container">
-
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <a href="#">Admin Dashboard</a>

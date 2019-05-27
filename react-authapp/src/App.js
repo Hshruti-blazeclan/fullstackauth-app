@@ -13,7 +13,7 @@ class App extends Component {
   render(){
     const urlParams = window.location.href.split( '/' )[3]
     // console.log("=>urlParams",/[^/]*$/.exec(window.location.href))
-    console.log("urlParamsurlParamsurlParamsurlParams", urlParams)
+    // console.log("urlParamsurlParamsurlParamsurlParams", urlParams)
     return(
       <BrowserRouter>
       {/* <Router basename={/[^/]*$/.exec(window.location.href)[0]}></Router> */}

@@ -20,7 +20,7 @@ class Login extends Component {
   }
 
   inputChangeHandleHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if(this.state.errorMsg){
       this.setState({
         isActive: true,
@@ -64,7 +64,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log("=>>>>>>>>>>>>..state", this.state)
     if (this.state.toDashboard === true) {
       return <Redirect to={{
         pathname: this.props.pathname === "schoolone" ? "/schoolone/dashboard" : "/schooltwo/dashboard",
